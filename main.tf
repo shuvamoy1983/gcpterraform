@@ -1,5 +1,4 @@
 provider "google" {
-  version = "3.5.0"
   project = var.project
   region  = var.region
   credentials = "/home/cloud_user/tf/t.json"
@@ -58,7 +57,6 @@ module "network_routes" {
   }
 module "network_fabric-net-firewall" {
   source  = "terraform-google-modules/network/google//modules/fabric-net-firewall"
-  version = "1.1.0"
   project_id              = var.project
   network                 = module.network.network_name
   internal_ranges_enabled = true
