@@ -7,19 +7,19 @@ pipeline {
          }
     stages {
 	    stage('Terraform Init') {
-          steps {
-          sh "terraform init -input=false"
+              steps {
+              sh "terraform init"
            }
       }
-        stage('Terraform Plan') {
-          steps {
-          sh "terraform plan -out=tfplan -input=false"
+            stage('Terraform Plan') {
+              steps {
+              sh "terraform plan -out=tfplan -input=false"
                 }
          }
-        stage('Terraform Apply') {
-          steps {
-          input 'Apply Plan'
-          sh "terraform apply -input=false tfplan"
+            stage('Terraform Apply') {
+              steps {
+              input 'Apply Plan'
+              sh "terraform apply -input=false tfplan"
              }
         } 
     }
