@@ -1,7 +1,7 @@
 provider "google" {
   project = var.project
   region  = var.region
-  credentials = "/home/cloud_user/tf/t.json"
+  credentials = $1
   zone    = var.zone
 }
 
