@@ -2,13 +2,13 @@ provider "google" {
   version = "3.5.0"
   project = var.project
   region  = var.region
+  credentials = "/home/cloud_user/tf/t.json"
   zone    = var.zone
 }
 
 
 module "network" {
   source  = "terraform-google-modules/network/google"
-  version = "2.0.2"
 
   network_name = "myvpc-network"
   project_id   = var.project
@@ -42,7 +42,6 @@ module "network" {
 
 module "network_routes" {
   source  = "terraform-google-modules/network/google//modules/routes"
-  version = "2.1.1"
   network_name = module.network.network_name
   project_id   = var.project
 
