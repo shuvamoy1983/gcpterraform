@@ -13,8 +13,21 @@ resource "google_container_cluster" "gcp_kubernetes" {
     username = "${var.gke_username}"
     password = "${var.gke_password}}"
   }
+  network  = var.vpc
+  subnetwork = var.subnet
+  
+  autoscaling {
+    min_node_count = "3"
+    max_node_count = "5"
+  }
 
   node_config {
+    preemptible  = true
+    machine_type = "e2-standard-8"
+
+    metadata = {
+      disable-legacy-endpoints = "true"
+    }
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/devstorage.read_only",

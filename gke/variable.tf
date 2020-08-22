@@ -1,5 +1,5 @@
 variable "project" { 
-  default = "playground-s-11-3e966811"
+  default = "poc-sed-shared-jetstream-sb"
 }
 
 variable "region" { 
